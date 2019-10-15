@@ -6,7 +6,116 @@
         xmlns:local="clr-namespace:lab5"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid HorizontalAlignment="Left" Margin="0,0,-0.4,0" Width="794">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Label x:Name="NameLabel" 
+               Content="Name"
+               HorizontalAlignment="Left"
+               Margin="40,100,0,0"
+               VerticalAlignment="Top"/>
+        <TextBox x:Name="NameTextBox" 
+                 HorizontalAlignment="Left"
+                 Height="23" 
+                 Margin="40,131,0,0" 
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="200"/>
+        <Label x:Name="MailLabelGridZero"
+               Content="Mail" 
+               HorizontalAlignment="Left"
+               Margin="40,176,0,0"
+               VerticalAlignment="Top"/>
+        <TextBox x:Name="MailTextBox"
+                 HorizontalAlignment="Left"
+                 Height="23"
+                 Margin="40,207,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="200"/>
+        <Button x:Name="SaveButton"
+                Content=" Create User"
+                HorizontalAlignment="Left"
+                Margin="40,350,0,0"
+                VerticalAlignment="Top"
+                Width="80" Click="SaveButton_Click"/>
+        <Button x:Name="UpdateButton"
+                Content="Update"
+                HorizontalAlignment="Left"
+                Margin="158,350,0,0"
+                VerticalAlignment="Top"
+                Width="80" Click="UpdateButton_Click"/>
+
+        <Label x:Name="AdminLabel"
+               Content="Admins"
+               FontSize="20"
+               Grid.Column="2"
+               HorizontalAlignment="Center"
+               Margin="0,10,0,0"
+               VerticalAlignment="Top"/>
+        <ListBox x:Name="UserListBox"
+                 Grid.Column="1"
+                 HorizontalAlignment="Center"
+                 Height="250"
+                 VerticalAlignment="Top"
+                 Width="200"
+                 Margin="20,50,20,0" SelectionChanged="UserListBox_SelectionChanged" />
+        <Button x:Name="ToAdminButton"
+                Content="=> Admin"
+                Grid.Column="1"
+                HorizontalAlignment="Right"
+                Margin="0,350,32.6,0"
+                VerticalAlignment="Top"
+                Width="80" Click="ToAdminButton_Click"/>
+        <Button x:Name="DeleteButtonGridOne"
+                Content="Delete"
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                Margin="32.2,350,0,0"
+                VerticalAlignment="Top"
+                Width="80" Click="DeleteUserButton_Click"/>
+
+        <Label x:Name="UserLabel"
+               Content="Users"
+               FontSize="20"
+               Grid.Column="1"
+               HorizontalAlignment="Center"
+               Margin="0,10,0,0"
+               VerticalAlignment="Top"/>
+        <ListBox x:Name="AdminListBox"
+                 Grid.Column="2"
+                 HorizontalAlignment="Center"
+                 Height="250"
+                 Margin="20,50,20,0"
+                 VerticalAlignment="Top"
+                 Width="200" SelectionChanged="AdminListBox_SelectionChanged"/>
+        <Button x:Name="ToUserButton" 
+                Content="==> User"
+                Grid.Column="2"
+                HorizontalAlignment="Right"
+                Margin="0,350,31.6,0"
+                VerticalAlignment="Top"
+                Width="80" Click="ToUserButton_Click"/>
+        <Button x:Name="DeleteButtonGrid2" 
+                Content="Delete"
+                Grid.Column="2"
+                HorizontalAlignment="Center"
+                Margin="32.4,350,151.6,0"
+                VerticalAlignment="Top"
+                Width="80" Click="DeleteAdminButton_Click"/>
+        <Label x:Name="MailLabelGridTwo" Content="Mail:" Grid.Column="2" HorizontalAlignment="Left" Margin="32.4,312,0,0" VerticalAlignment="Top" Width="200"/>
+        <Label x:Name="MailLabelGridOne" Content="Mail:" Grid.Column="1" HorizontalAlignment="Left" Margin="32.2,312,0,0" VerticalAlignment="Top" Width="200"/>
+        <Label x:Name="RegisterUserLabel" Content="Register User"
+            FontSize="20"
+            HorizontalAlignment="Center"
+            Margin="0,10,0,0"
+            VerticalAlignment="Top"/>
+
+
+
     </Grid>
 </Window>
