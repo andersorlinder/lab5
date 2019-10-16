@@ -32,10 +32,10 @@ namespace lab5
             //admins = admins.OrderBy(u => u.Name).Select(u => u).ToList();
         }
 
-        public static List<User> GetSortedAdminList()
-        {
-            var sortedUserList = users.OrderBy(u => u.Name).Select(u => u).ToList();
-            return sortedUserList;
-        }
+        //public static List<User> GetSortedAdminList()
+        //{
+        //    var sortedUserList = users.OrderBy(u => u.Name).Select(u => u).ToList();
+        //    return sortedUserList;
+        //}
     }
 }
