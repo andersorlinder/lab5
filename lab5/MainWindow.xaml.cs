@@ -97,29 +97,29 @@ namespace lab5
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            nameInput = NameTextBox.Text;
-            mailInput = MailTextBox.Text;
+            nameInput = NameTextBox.Text.Trim();
+            mailInput = MailTextBox.Text.Replace(" ", "");
             if (!IsNameAndMailCorrect(nameInput, mailInput, "Register user", "User already exist."))
             {
                 return;
             }
-            User.users.Add(new User(nameInput.Trim(), mailInput.Replace(" ", "")));
+            User.users.Add(new User(nameInput, mailInput));
             RefreshListBoxes();
             ClearTextFields();
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            nameInput = NameTextBox.Text;
-            mailInput = MailTextBox.Text;
+            nameInput = NameTextBox.Text.Trim();
+            mailInput = MailTextBox.Text.Replace(" ", "");
             if (!IsNameAndMailCorrect(nameInput, mailInput, "Updating user", "No update."))
             {
                 return;
             }
             if (currentUser != null)
             {
-                currentUser.Name = nameInput.Trim();
-                currentUser.Mail = mailInput.Replace(" ", "");
+                currentUser.Name = nameInput();
+                currentUser.Mail = mailInput;
                 RefreshListBoxes();
                 ClearTextFields();
                 UserListBox.UnselectAll();
