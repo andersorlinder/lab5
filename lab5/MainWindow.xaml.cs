@@ -63,7 +63,7 @@ namespace lab5
             ToUserButton.IsEnabled = aBool;
         }
 
-        private bool IsNameAndMailCorrect(string name, string mail, string titel, string duplicate)
+        private bool IsNameAndMailCorrect(string name, string mail, string titel)
         {
 
             if (name == "" || mail == "")
@@ -80,7 +80,7 @@ namespace lab5
             {
                 if (user.Name == name && user.Mail == mail)
                 {
-                    MessageBox.Show(duplicate, titel);
+                    MessageBox.Show("User already exist.", titel);
                     return false;
                 }
             }
@@ -88,7 +88,7 @@ namespace lab5
             {
                 if (admin.Name == name && admin.Mail == mail)
                 {
-                    MessageBox.Show(duplicate, titel);
+                    MessageBox.Show("User already exist.", titel);
                     return false;
                 }
             }
@@ -99,7 +99,7 @@ namespace lab5
         {
             nameInput = NameTextBox.Text.Trim();
             mailInput = MailTextBox.Text.Replace(" ", "");
-            if (!IsNameAndMailCorrect(nameInput, mailInput, "Register user", "User already exist."))
+            if (!IsNameAndMailCorrect(nameInput, mailInput, "Register user"))
             {
                 return;
             }
@@ -112,13 +112,13 @@ namespace lab5
         {
             nameInput = NameTextBox.Text.Trim();
             mailInput = MailTextBox.Text.Replace(" ", "");
-            if (!IsNameAndMailCorrect(nameInput, mailInput, "Updating user", "No update."))
+            if (!IsNameAndMailCorrect(nameInput, mailInput, "Updating user"))
             {
                 return;
             }
             if (currentUser != null)
             {
-                currentUser.Name = nameInput();
+                currentUser.Name = nameInput;
                 currentUser.Mail = mailInput;
                 RefreshListBoxes();
                 ClearTextFields();
@@ -141,11 +141,11 @@ namespace lab5
         {
             if (UserListBox.SelectedItem != null)
             {
+                AdminListBox.UnselectAll();
+                ClearTextFields();
                 SetAdminButtons(false);
                 SetUserButtons(true);
                 currentAdmin = null;
-                ClearTextFields();
-                AdminListBox.UnselectAll();
                 currentUser = (UserListBox.SelectedItem as User);
                 NameTextBox.Text = currentUser.Name;
                 MailTextBox.Text = currentUser.Mail;
@@ -157,11 +157,11 @@ namespace lab5
         {
             if (AdminListBox.SelectedItem != null)
             {
+                UserListBox.UnselectAll();
+                ClearTextFields();
                 SetUserButtons(false);
                 SetAdminButtons(true);
                 currentUser = null;
-                ClearTextFields();
-                UserListBox.UnselectAll();
                 currentAdmin = (AdminListBox.SelectedItem as User);
                 NameTextBox.Text = currentAdmin.Name;
                 MailTextBox.Text = currentAdmin.Mail;
