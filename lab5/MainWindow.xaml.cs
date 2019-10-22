@@ -52,14 +52,14 @@ namespace lab5
         private void SetUserButtons(bool aBool)
         {
             UpdateButton.IsEnabled = aBool;
-            DeleteUserButton.IsEnabled = aBool;
+            DeleteButton.IsEnabled = aBool;
             ToAdminButton.IsEnabled = aBool;
         }
 
         private void SetAdminButtons(bool aBool)
         {
             UpdateButton.IsEnabled = aBool;
-            DeleteAdminButton.IsEnabled = aBool;
+            DeleteButton.IsEnabled = aBool;
             ToUserButton.IsEnabled = aBool;
         }
 
@@ -162,6 +162,7 @@ namespace lab5
                 SetUserButtons(false);
                 SetAdminButtons(true);
                 currentUser = null;
+
                 currentAdmin = (AdminListBox.SelectedItem as User);
                 NameTextBox.Text = currentAdmin.Name;
                 MailTextBox.Text = currentAdmin.Mail;
@@ -169,24 +170,26 @@ namespace lab5
             }
         }
 
-        private void DeleteUserButton_Click(object sender, RoutedEventArgs e)
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            User.users.Remove(currentUser);
-            currentUser = null;
-            RefreshListBoxes();
-            ClearTextFields();
-            UserListBox.UnselectAll();
-            SetUserButtons(false);
-        }
-
-        private void DeleteAdminButton_Click(object sender, RoutedEventArgs e)
-        {
-            User.admins.Remove(currentAdmin);
-            currentAdmin = null;
-            RefreshListBoxes();
-            ClearTextFields();
-            AdminListBox.UnselectAll();
-            SetAdminButtons(false);
+            if (currentUser != null)
+            {
+                User.users.Remove(currentUser);
+                currentUser = null;
+                RefreshListBoxes();
+                ClearTextFields();
+                UserListBox.UnselectAll();
+                SetUserButtons(false);
+            }
+            else if (currentAdmin != null)
+            {
+                User.admins.Remove(currentAdmin);
+                currentAdmin = null;
+                RefreshListBoxes();
+                ClearTextFields();
+                AdminListBox.UnselectAll();
+                SetAdminButtons(false);
+            }
         }
 
         private void ToAdminButton_Click(object sender, RoutedEventArgs e)
