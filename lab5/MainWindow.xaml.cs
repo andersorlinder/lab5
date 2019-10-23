@@ -46,7 +46,6 @@ namespace lab5
             MailTextBox.Clear();
             MailUserLabel.Content = $"Mail: ";
             MailAdminLabel.Content = $"Mail: ";
-
         }
 
         private void SetUserButtons(bool aBool)
@@ -71,7 +70,7 @@ namespace lab5
                 MessageBox.Show("Name or mail is missing.", titel);
                 return false;
             }
-            else if (!mail.Contains("@"))
+            if (!mail.Contains("@"))
             {
                 MessageBox.Show("Mail is not correct, use @.", titel);
                 return false;
